@@ -12,14 +12,10 @@ export async function getJoke() {
     const data = await response.json();
 
     // Actualiza el texto del chiste en el elemento <p>
-    document.getElementById('jokeList').innerHTML = '';
-    document.getElementById('jokeList').style.display = 'none';
 
-    const jokeItem = document.createElement('li');
+    const jokeItem = document.getElementById('jokeText');
     jokeItem.textContent = data.joke;
 
-    document.getElementById('jokeList').appendChild(jokeItem);
-    document.getElementById('jokeList').style.display = 'block';
   } catch (error) {
     console.log(error);
   }
@@ -41,11 +37,13 @@ export async function searchJoke() {
     const jokeList = document.getElementById('jokeList');
     jokeList.innerHTML = '';
 
-    if (data.results.length > 0) {
+    if (data.results.length > 0 && searchTerm != 0) {
       for (const result of data.results) {
-        const jokeItem = document.createElement('li');
-        jokeItem.textContent = result.joke;
-        jokeList.appendChild(jokeItem);
+        const jokeLink = document.createElement('a');
+        jokeLink.textContent = result.joke;
+        jokeLink.href = 'productPage.html'; 
+
+        jokeList.appendChild(jokeLink);
       }
       jokeList.style.display = 'block';
     } else {

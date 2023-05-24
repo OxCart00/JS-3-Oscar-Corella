@@ -13,11 +13,16 @@
   <div class="container">
     <h1>Dad´s Jokes</h1>
     <div>
-      <input type="text" id="searchInput" placeholder="Buscar chiste...">
-      <button id="searchButton">Buscar</button>
+      <button id="jokeButton">Random Joke</button>
+      <a href="productPage.html" id="jokeText"></a>
     </div>
-    <button id="jokeButton">Random Joke</button>
-    <p id="jokeText"></p>
+    <div>
+      <form id="searchForm">
+        <input type="text" id="searchInput" placeholder="Buscar chiste...">
+        <button type="submit" id="searchButton">Buscar</button>
+      </form>
+    </div>
+
     <ul id="jokeList"></ul>
   </div>
 </body>
