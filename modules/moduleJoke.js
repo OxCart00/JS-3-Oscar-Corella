@@ -38,13 +38,20 @@ export async function searchJoke() {
     jokeList.innerHTML = '';
 
     if (data.results.length > 0 && searchTerm != 0) {
+      const jokesFragment = document.createDocumentFragment(); // Crea un fragmento de documento para agregar los chistes
+    
       for (const result of data.results) {
-        const jokeLink = document.createElement('a');
+        const jokeItem = document.createElement('li'); // Crea un elemento de lista para cada chiste
+        const jokeLink = document.createElement('a'); // Crea un enlace para cada chiste
         jokeLink.textContent = result.joke;
-        jokeLink.href = 'productPage.html'; 
-
-        jokeList.appendChild(jokeLink);
+        jokeLink.href = 'productPage.html';
+        jokeItem.appendChild(jokeLink); // Agrega el enlace al elemento de lista
+        jokesFragment.appendChild(jokeItem); // Agrega el elemento de lista al fragmento de documento
       }
+    
+      // Agrega todos los chistes al DOM de una sola vez
+      jokeList.appendChild(jokesFragment);
+    
       jokeList.style.display = 'block';
     } else {
       const noResultsItem = document.createElement('li');

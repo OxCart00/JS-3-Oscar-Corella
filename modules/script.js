@@ -24,13 +24,6 @@ blackButton.addEventListener('click', function() {
   productImage.src = 'ruta_imagen_producto_negro.png'; // Reemplaza 'ruta_imagen_producto_negro.png' con la ruta real de la imagen en negro
 });
 
-// Función para generar un chiste aleatorio
-function generateRandomJoke() {
-  // Lógica para generar un chiste aleatorio
-  const randomJoke = 'Chiste aleatorio';
-
-  selectedJoke.textContent = randomJoke;
-}
 
 // Evento de clic para el botón "Generar chiste aleatorio"
 randomJokeButton.addEventListener('click', generateRandomJoke);
