@@ -1,15 +1,9 @@
-let API_URL = 'https://icanhazdadjoke.com/';
+import { fetchData } from './fetch.js   ';
 
 // Función para obtener un chiste aleatorio
-export async function getJoke() {
+export async function getJoke(API_URL) {
   try {
-    const response = await fetch(API_URL, {
-      headers: {
-        Accept: 'application/json'
-      }
-    });
-
-    const data = await response.json();
+    const data = await fetchData(API_URL);
 
     // Actualiza el texto del chiste en el elemento <p>
 
@@ -24,15 +18,11 @@ export async function getJoke() {
 // Función para buscar chistes que coincidan con un término
 export async function searchJoke() {
   const searchTerm = document.getElementById('searchInput').value;
+  const search_URL = `https://icanhazdadjoke.com/search?term=${searchTerm}`;
 
   try {
-    const response = await fetch(`https://icanhazdadjoke.com/search?term=${searchTerm}`, {
-      headers: {
-        Accept: 'application/json'
-      }
-    });
 
-    const data = await response.json();
+    const data = await fetchData(search_URL);
 
     const jokeList = document.getElementById('jokeList');
     jokeList.innerHTML = '';
@@ -44,7 +34,7 @@ export async function searchJoke() {
         const jokeItem = document.createElement('li'); // Crea un elemento de lista para cada chiste
         const jokeLink = document.createElement('a'); // Crea un enlace para cada chiste
         jokeLink.textContent = result.joke;
-        jokeLink.href = 'productPage.html';
+        jokeLink.href = `productPage.html?${result.id}`;
         jokeItem.appendChild(jokeLink); // Agrega el enlace al elemento de lista
         jokesFragment.appendChild(jokeItem); // Agrega el elemento de lista al fragmento de documento
       }
