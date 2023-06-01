@@ -9,6 +9,7 @@ export async function getJoke(API_URL) {
 
     const jokeItem = document.getElementById('jokeText');
     jokeItem.textContent = data.joke;
+    jokeItem.href = `productPage.html?joke=${data.joke}`
 
   } catch (error) {
     console.log(error);
@@ -34,7 +35,7 @@ export async function searchJoke() {
         const jokeItem = document.createElement('li'); // Crea un elemento de lista para cada chiste
         const jokeLink = document.createElement('a'); // Crea un enlace para cada chiste
         jokeLink.textContent = result.joke;
-        jokeLink.href = `productPage.html?${result.id}`;
+        jokeLink.href = `productPage.html?joke=${result.joke}`;
         jokeItem.appendChild(jokeLink); // Agrega el enlace al elemento de lista
         jokesFragment.appendChild(jokeItem); // Agrega el elemento de lista al fragmento de documento
       }

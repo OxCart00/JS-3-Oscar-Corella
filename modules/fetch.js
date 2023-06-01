@@ -5,9 +5,7 @@ export async function fetchData(API_URL) {
         Accept: 'application/json'
       }
     });
-
     const data = await response.json();
-
     return data;
   } catch (error) {
     console.log(error);

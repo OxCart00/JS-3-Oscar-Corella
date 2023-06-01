@@ -1,4 +1,4 @@
-import { getJoke, searchJoke } from './modules/moduleJoke.js';
+import { getJoke, searchJoke } from './moduleJoke.js';
 
 const API_URL = 'https://icanhazdadjoke.com/'
 

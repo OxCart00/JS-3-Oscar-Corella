@@ -1,35 +1,58 @@
 [
   {
+    "title" : "Black shirt",
     "color" : "black",
-    "price" : "$X"
+    "price" : "$13",
+    "img" : "images/camisas_negras.jpeg",
+    "state" : "1"
   },
   {
-    "color" : "black",
-    "price" : "$X"
+    "title" : "White shirt",
+    "color" : "white",
+    "price" : "$10",
+    "img" : "images/camisas_blancas.jpeg",
+    "state" : "0"
   },
   {
+    "title" : "Black phone case",
     "color" : "black",
-    "price" : "$X"
+    "price" : "$7",
+    "img" : "images/case_negro.jpeg",
+    "state" : "0"
   },
   {
-    "color" : "black",
-    "price" : "$X"
+    "title" : "White phone case",
+    "color" : "white",
+    "price" : "$5",
+    "img" : "images/case_blanco.jpeg",
+    "state" : "0"
   },
   {
+    "title" : "Black poster",
     "color" : "black",
-    "price" : "$X"
+    "price" : "$5",
+    "img" : "images/poster_negro.jpeg",
+    "state" : "0"
   },
   {
-    "color" : "black",
-    "price" : "$X"
+    "title" : "White poster",
+    "color" : "white",
+    "price" : "$3",
+    "img" : "images/poster_blanco.jpeg",
+    "state" : "0"
   },
   {
+    "title" : "Black pillow",
     "color" : "black",
-    "price" : "$X"
+    "price" : "$15",
+    "img" : "images/almohada_negra.jpeg",
+    "state" : "0"
   },
   {
-    "color" : "black",
-    "price" : "$X"
+    "title" : "White pillow",
+    "color" : "white",
+    "price" : "$13",
+    "img" : "images/almohada_blanca.jpeg",
+    "state" : "0"
   }
-
 ]

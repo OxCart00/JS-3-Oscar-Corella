@@ -1,48 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="modules/eshop.js"></script>
   <script type="module" src="modules/script.js"></script>
   <title>Shop</title>
 </head>
+
 <body>
+
   <body>
-    <div id="productContainer">
+    <div id="main--display">
       <div>
-        <div>
-          <div id= "mainProduct">
-            <p id="productJoke"></p>
-            <img id="jokeImg" src="" alt="">
+        <div class="main--left">
+          <div id="main--product">
+            <p id="display--joke"></p>
           </div>
-          <div id="colorSelection">
-            <button id="whiteButton">Blanco</button>
-            <button id="blackButton">Negro</button>
+          <div id="color--selection">
+            <form>
+              <input type="radio" name="color--button" value="black">
+              <input type="radio" name="color--button" value="white">
+            </form>
           </div>
         </div>
-        <div>
-          <div id="productInfo">
-            <h2 id="productTitle">Título del producto</h2>
-            <p id="productPrice">Precio del producto</p>
-            <p id="selectedJoke">Chiste seleccionado</p>
+        <div class="main--right">
+          <div id="product--info">
+            <h2 id="product--title">Título del producto</h2>
+            <p id="product--price">Precio del producto</p>
+            <p id="selected--joke"><span>Joke: </span>Chiste seleccionado</p>
           </div>
-          <div id="jokeSelect">
+          <div id="joke--change">
             <h2>Select another joke!!!</h2>
-            <p id="jokeText">Texto del chiste</p>
-            <button id="jokeButton">Generar chiste aleatorio</button>
+            <p id="joke--btn">Texto del chiste</p>
+            <button id="joke--button">Generar chiste aleatorio</button>
           </div>
         </div>
       </div>
-      <div id="otherProducts">
-        <h3>Choose other products</h3>
-        <img src="ruta_imagen_producto1.png" alt="Producto 1">
-        <img src="ruta_imagen_producto2.png" alt="Producto 2">
-        <img src="ruta_imagen_producto3.png" alt="Producto 3">
+      <div id="carousel">
+        <!-- Contenedor del carrusel -->
+        <div class="carousel-container">
+          <!-- Carrusel -->
+          <div class="carousel-slide">
+            <!-- Productos -->
+          </div>
+        </div>
+        <!-- Botones de navegación -->
+        <button class="carousel-prev">Anterior</button>
+        <button class="carousel-next">Siguiente</button>
       </div>
     </div>
-  
-    <script type="module" src="script.js"></script>
+
+    <!-- <script type="module" src="script.js"></script> -->
   </body>
 </body>
+
 </html>
