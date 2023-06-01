@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="module" src="modules/eshop.js"></script>
-  <script type="module" src="modules/script.js"></script>
   <title>Shop</title>
 </head>
 
@@ -21,8 +20,8 @@
           </div>
           <div id="color--selection">
             <form>
-              <input type="radio" name="color--button" value="black">
-              <input type="radio" name="color--button" value="white">
+              <input type="radio" name="color--button" value="black" id="blackButton">
+              <input type="radio" name="color--button" value="white" id="whiteButton">
             </form>
           </div>
         </div>
@@ -30,12 +29,12 @@
           <div id="product--info">
             <h2 id="product--title">Título del producto</h2>
             <p id="product--price">Precio del producto</p>
-            <p id="selected--joke"><span>Joke: </span>Chiste seleccionado</p>
+            <p id="selected--joke"></p>
           </div>
           <div id="joke--change">
             <h2>Select another joke!!!</h2>
-            <p id="joke--btn">Texto del chiste</p>
-            <button id="joke--button">Generar chiste aleatorio</button>
+            <a id="jokeText"></a>
+            <button id="jokeButton">Random Joke</button>
           </div>
         </div>
       </div>

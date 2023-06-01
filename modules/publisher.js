@@ -1,43 +1,19 @@
-import { fetchData } from './fetch.js';
 
 
-// Definición del módulo Observer
-const ObserverModule = (function () {
-  // Lista de observadores
-  const observers = [];
-
-  // Función para agregar observadores
-  function addObserver(observer) {
-    observers.push(observer);
+export class Observable {
+  constructor() {
+    this.observers = [];
   }
 
-  // Función para eliminar observadores
-  function removeObserver(observer) {
-    const index = observers.indexOf(observer);
-    if (index !== -1) {
-      observers.splice(index, 1);
-    }
+  subscribe(observer) {
+    this.observers.push(observer);
   }
 
-  // Función para notificar a todos los observadores
-  function notifyObservers(data) {
-    observers.forEach((observer) => observer.update(data));
+  unsubscribe(observer) {
+    this.observers = this.observers.filter((obs) => obs !== observer);
   }
 
-  return {
-    addObserver,
-    removeObserver,
-    notifyObservers,
-  };
-})();
-
-// Definición del observador
-const Observer = {
-  // Función para actualizar el observador
-  update(data) {
-    console.log('Se ha actualizado el observador con los datos:', data);
+  notify(data) {
+    this.observers.forEach((observer) => observer(data));
   }
-};
-
-// Exportar el módulo
-export {ObserverModule, Observer};
+}

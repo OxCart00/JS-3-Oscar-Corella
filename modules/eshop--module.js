@@ -1,6 +1,4 @@
 import { fetchData } from './fetch.js';
-// import { ObserverModule, Observer } from './publisher.js';
-
 export async function carousel(API) {
   try {
     const data = await fetchData(API);
@@ -66,17 +64,26 @@ export async function productDisplay(id, jokes_API, products_API) {
     const productsData = await fetchData(products_API);
 
 
-    // Filtrar los objetos con state igual a 0
+    // Filtrar los objetos con state igual a 1
     const displayObject = productsData.filter(objeto => objeto.state === "1");
 
 
     // Referencias a los elementos del DOM
     const displayImg = document.getElementById("main--product");
+    displayImg.style.backgroundImage = `url(${displayObject[0].img})`;
+    displayImg.style.backgroundSize = "cover";
+
     const jokeDisplay = document.getElementById("display--joke");
     jokeDisplay.textContent = id;
+
     const productTitle = document.getElementById("product--title");
+    productTitle.textContent = displayObject[0].title;
+
     const productPrice = document.getElementById("product--price");
-    const productJoke = document.getElementById("product--joke");
+    productPrice.textContent = displayObject[0].price; 
+
+    const productJoke = document.getElementById("selected--joke");
+    productJoke.innerHTML = `<span>Joke: </span>${id}`;
 
     // Crear elementos HTML para mostrar los productos
 
