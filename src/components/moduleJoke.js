@@ -4,6 +4,7 @@ import { fetchData } from './fetch.js   ';
 export async function getJoke(API_URL) {
   try {
     const data = await fetchData(API_URL);
+    console.log(data);
 
     // Actualiza el texto del chiste en el elemento <p>
 
@@ -24,6 +25,7 @@ export async function searchJoke() {
   try {
 
     const data = await fetchData(search_URL);
+    console.log(data);
 
     const jokeList = document.getElementById('jokeList');
     jokeList.innerHTML = '';
