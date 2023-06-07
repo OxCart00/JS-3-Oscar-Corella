@@ -10,7 +10,7 @@ export async function getJoke(API_URL) {
 
     const jokeItem = document.getElementById('jokeText');
     jokeItem.textContent = data.joke;
-    jokeItem.href = `productPage.html?joke=${data.joke}`
+    jokeItem.href = `productPage.html?joke=${data.joke}`;
 
   } catch (error) {
     console.log(error);
