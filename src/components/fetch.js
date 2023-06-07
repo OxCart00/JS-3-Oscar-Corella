@@ -12,3 +12,4 @@ export async function fetchData(API_URL) {
     throw error;
   }
 }
+

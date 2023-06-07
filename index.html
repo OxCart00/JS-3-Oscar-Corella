@@ -5,25 +5,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-  <script type="module" src="modules/main.js"></script>
+  <script type="module" src="src/main.js"></script>
   <title>Homework 1</title>
 </head>
 <body>
   <img class="heroImage" src="images/dad.jpeg" alt="">
-  <div class="container">
+  <div class="container center--container">
     <h1>Dad´s Jokes</h1>
-    <div>
-      <button id="jokeButton">Random Joke</button>
+    <div class="center--container">
+      <button id="jokeButton" class="button--set">Random Joke</button>
       <a id="jokeText"></a>
     </div>
     <div>
-      <form id="searchForm">
+      <form id="searchForm" class="center--container">
         <input type="text" id="searchInput" placeholder="Buscar chiste...">
-        <button type="submit" id="searchButton">Buscar</button>
+        <button type="submit" id="searchButton" class="button--set">Buscar</button>
       </form>
     </div>
 
-    <ul id="jokeList"></ul>
+    <ul id="jokeList" class="center--container"></ul>
   </div>
 </body>
 </html>
