@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,47 @@
   <link rel="stylesheet" href="./styles/eshop_styles.css">
   <title>Document</title>
 </head>
+
 <body>
-  
+  <main class="main--container">
+    <div class="main--left">
+      <div id="main--product" class="product--display">
+        <p id="display--joke"></p>
+        <img src="images/dad.jpg" class="dad--img" alt="">
+      </div>
+      <div id="color--selection">
+        <div>
+          <input data-id="black" class="color b" type="radio" checked name="color">
+          <label for="black">Black</label>
+        </div>
+        <div>
+          <input data-id="white" class="color w" type="radio" name="color">
+          <label for="white">White</label>
+        </div>
+      </div>
+    </div>
+    <div class="main--right">
+      <div id="product--info">
+        <h2 id="product--title">Título del producto</h2>
+        <p id="product--price">Precio del producto</p>
+        <p id="selected--joke"></p>
+      </div>
+      <div id="joke--change">
+        <h2>Select another joke!!!</h2>
+        <p id="jokeText"></p>
+        <button id="jokeButton" class="button--set">Random Joke</button>
+      </div>
+    </div>
+  </main>
+  <!-- Botones de navegación -->
+  <div class="carrousel-buttons">
+    <button class="carousel-prev">Anterior</button>
+    <button class="carousel-next">Siguiente</button>
+  </div>
+  <!-- Carrusel -->
+  <div class="carousel-slide">
+    <!-- Productos -->
+  </div>
 </body>
+
 </html>
