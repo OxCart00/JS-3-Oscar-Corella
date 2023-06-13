@@ -1,6 +1,7 @@
-import { carousel, productDisplay } from "./eshop--module.js";
-import { Observable } from './publisher.js';
-import { getJoke} from './moduleJoke.js';
+import { carousel, productDisplay } from "../src/components/eshop--module.js";
+import { Observable } from '../src/publisher.js';
+import { getJoke } from '../src/components/moduleJoke.js';
+import { fetchData } from '../src/components/fetch.js';
 
 // Observadores
 
@@ -22,27 +23,39 @@ const products_API = 'products.json';
 const jokes_API = 'https://icanhazdadjoke.com/';
 
 carousel(products_API);
-productDisplay(savedJoke, jokes_API, products_API);
-
-// Observers para los cambios de producto y color
-const productObserver = (data) => {
-  productImage.src = data.img;
-  productImage.alt = data.title;
-  productTitle.textContent = `${data.title} - ${data.color}`;
-  productPrice.textContent = data.price;
-};
-
-const colorObserver = (data) => {
-  productTitle.textContent = `${productTitle.textContent.split(' - ')[0]} - ${data}`;
-};
-
-
+productDisplay(savedJoke, products_API);
 
 // Suscribir los observers a los observables correspondientes
-productObservable.subscribe(productObserver);
-colorObservable.subscribe(colorObserver);
+colorObservable.setSubscriber(productDisplay);
 
 // Evento de clic para el botón de chiste aleatorio
+const jokeText = document.getElementById("jokeText");
 document.getElementById('jokeButton').addEventListener('click', async () => {
-  await getJoke(jokes_API);
+  await getJoke(jokes_API, jokeText);
+  jokeText.classList.add("joke--link")
+});
+
+// Eventos cambio de color
+const whiteButton = document.getElementById('whiteButton');
+whiteButton.addEventListener('click', async () => {
+  if (whiteButton.checked == true) {
+    const state = "state"
+    const productsData = await fetchData(products_API);
+    const position = productsData.findIndex(producto => producto[state] === "1");
+    productsData[position].state = "0";
+    productsData[position+1].state = "1";
+    colorObservable.twoVariableNotify(savedJoke, productsData);
+  }
+});
+const blackButton = document.getElementById('blackButton');
+blackButton.addEventListener('click', async () => {
+  if (blackButton.checked == true) {
+    const state = "state"
+    const productsData = await fetchData(products_API);
+    const position = productsData.findIndex(producto => producto[state] === "1");
+    productsData[position].state = "0";
+    productsData[position-1].state = "1";
+    colorObservable.twoVariableNotify(savedJoke, productsData);
+    console.log(productsData);
+  }
 });

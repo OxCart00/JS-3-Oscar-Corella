@@ -1,55 +1,44 @@
-import { fetchData } from './fetch.js';
+import { fetchData } from "./fetch.js";
 export async function carousel(API) {
   try {
     const data = await fetchData(API);
     // Filtrar los objetos con state igual a 0
-    const carouselObjects = data.filter(objeto => objeto.state === "0");
     // Obtener referencias a los elementos del carrusel y los botones de navegación
-    const carouselContainer = document.querySelector('.carousel-container');
-    const carouselSlide = document.querySelector('.carousel-slide');
+    const carouselContainer = document.querySelector('.carousel-slide');
+    const carouselProducts = document.querySelectorAll('.carousel-product');
     const prevButton = document.querySelector('.carousel-prev');
     const nextButton = document.querySelector('.carousel-next');
 
-    // Configuración del carrusel
-    const slideWidth = 100 / 4; // Ancho de cada slide en porcentaje (para mostrar 3 productos en pantalla)
-    let slidePosition = 0; // Posición actual del carrusel
+    // Filtrar los productos con state = 0
+    const filteredProducts = data.filter(product => product.state === "0");
 
-    // Agregar estilos CSS al carrusel y los botones de navegación
-    carouselContainer.style.overflow = 'hidden';
-    carouselSlide.style.display = 'flex';
-    carouselSlide.style.width = `${carouselObjects.length * slideWidth}%`;
-    carouselSlide.style.transition = 'transform 0.5s ease-in-out';
-
-    prevButton.addEventListener('click', () => {
-      // Mover el carrusel hacia la izquierda
-      slidePosition += slideWidth;
-      if (slidePosition > 0) {
-        slidePosition = 0;
-      }
-      carouselSlide.style.transform = `translateX(${slidePosition}%)`;
-    });
-
-    nextButton.addEventListener('click', () => {
-      // Mover el carrusel hacia la derecha
-      slidePosition -= slideWidth;
-      const maxPosition = -slideWidth * (carouselObjects.length - 3); // Máxima posición a la que se puede mover
-      if (slidePosition < maxPosition) {
-        slidePosition = maxPosition;
-      }
-      carouselSlide.style.transform = `translateX(${slidePosition}%)`;
-    });
-
-    // Crear elementos HTML para mostrar los productos
-    carouselObjects.forEach(objeto => {
+    // Generar los elementos del carrusel
+    filteredProducts.forEach(product => {
+      // Crear el elemento del producto
       const productElement = document.createElement('div');
-      productElement.classList.add('carousel-product');
-      // Agregar evento de clic al contenedor <div>
-      productElement.addEventListener('click', () => {
-        // Lógica del evento al hacer clic en el contenedor
-        console.log('¡Haz hecho clic en el contenedor de imagen!');
-      });
-      productElement.innerHTML = `<img src="${objeto.img}" alt="${objeto.title}">`;
-      carouselSlide.appendChild(productElement);
+      productElement.classList.add('carousel-item');
+      // Añadir el contenido del producto
+      productElement.innerHTML = `
+    <img src="${product.img}" alt="${product.title}">
+    <h3>${product.title}</h3>
+    <p>Color: ${product.color}</p>
+    <p>Price: ${product.price}</p>
+  `;
+      // Añadir el producto al carrusel
+      carouselContainer.appendChild(productElement);
+    });
+
+    // Tamaño de un solo elemento del carrusel (incluyendo margen)
+    const itemWidth = carouselContainer.querySelector('.carousel-item').offsetWidth + 20;
+
+    // Desplazarse hacia la izquierda
+    prevButton.addEventListener('click', () => {
+      carouselContainer.scrollLeft -= itemWidth;
+    });
+
+    // Desplazarse hacia la derecha
+    nextButton.addEventListener('click', () => {
+      carouselContainer.scrollLeft += itemWidth;
     });
 
 
@@ -58,12 +47,13 @@ export async function carousel(API) {
   }
 }
 
-export async function productDisplay(id, jokes_API, products_API) {
+export async function productDisplay(id, products_API) {
+  if (!Array.isArray(products_API)) {
+    var productsData = await fetchData(products_API);
+    }else{
+      var productsData =  products_API;
+    }
   try {
-    const jokesData = await fetchData(jokes_API);
-    const productsData = await fetchData(products_API);
-
-
     // Filtrar los objetos con state igual a 1
     const displayObject = productsData.filter(objeto => objeto.state === "1");
 
@@ -75,12 +65,22 @@ export async function productDisplay(id, jokes_API, products_API) {
 
     const jokeDisplay = document.getElementById("display--joke");
     jokeDisplay.textContent = id;
+    if (displayObject[0].color == 'black') {
+      jokeDisplay.style.color = 'white';
+      const radioButton = document.querySelector('#blackButton');
+      radioButton.checked = true;
+    } else {
+      jokeDisplay.style.color = 'white';
+      const radioButton = document.querySelector('#whiteButton');
+      radioButton.checked = true;
+
+    }
 
     const productTitle = document.getElementById("product--title");
     productTitle.textContent = displayObject[0].title;
 
     const productPrice = document.getElementById("product--price");
-    productPrice.textContent = displayObject[0].price; 
+    productPrice.textContent = displayObject[0].price;
 
     const productJoke = document.getElementById("selected--joke");
     productJoke.innerHTML = `<span>Joke: </span>${id}`;

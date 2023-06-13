@@ -1,17 +1,15 @@
 export class Observable {
   constructor() {
-    this.observers = [];
+    this.subscriber = null;
   }
 
-  subscribe(observer) {
-    this.observers.push(observer);
+  setSubscriber(subscriber) {
+    this.subscriber = subscriber;
   }
 
-  unsubscribe(observer) {
-    this.observers = this.observers.filter((obs) => obs !== observer);
-  }
-
-  notify(data) {
-    this.observers.forEach((observer) => observer(data));
+  twoVariableNotify(data1, data2) {
+    if (typeof this.subscriber === 'function') {
+      this.subscriber(data1, data2);
+    }
   }
 }

@@ -5,55 +5,50 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script type="module" src="modules/eshop.js"></script>
+  <link rel="stylesheet" href="../shop_styles.css">
+  <script type="module" src="../src/eshop.js"></script>
   <title>Shop</title>
 </head>
 
 <body>
-
-  <body>
-    <div id="main--display">
-      <div>
-        <div class="main--left">
-          <div id="main--product">
-            <p id="display--joke"></p>
-          </div>
-          <div id="color--selection">
-            <form>
-              <input type="radio" name="color--button" value="black" id="blackButton">
-              <input type="radio" name="color--button" value="white" id="whiteButton">
-            </form>
-          </div>
-        </div>
-        <div class="main--right">
-          <div id="product--info">
-            <h2 id="product--title">Título del producto</h2>
-            <p id="product--price">Precio del producto</p>
-            <p id="selected--joke"></p>
-          </div>
-          <div id="joke--change">
-            <h2>Select another joke!!!</h2>
-            <a id="jokeText"></a>
-            <button id="jokeButton">Random Joke</button>
-          </div>
-        </div>
+  <div class="main--container">
+    <div class="main--left">
+      <div id="main--product" class="product--display">
+        <p id="display--joke"></p>
+        <img src="images/dad.jpeg" class="dad--img" alt="">
       </div>
-      <div id="carousel">
-        <!-- Contenedor del carrusel -->
-        <div class="carousel-container">
-          <!-- Carrusel -->
-          <div class="carousel-slide">
-            <!-- Productos -->
-          </div>
-        </div>
-        <!-- Botones de navegación -->
-        <button class="carousel-prev">Anterior</button>
-        <button class="carousel-next">Siguiente</button>
+      <div id="color--selection">
+        <form>
+          <input type="radio" name="color--button" value="black" id="blackButton">
+          <input type="radio" name="color--button" value="white" id="whiteButton">
+        </form>
       </div>
     </div>
+    <div class="main--right">
+      <div id="product--info">
+        <h2 id="product--title">Título del producto</h2>
+        <p id="product--price">Precio del producto</p>
+        <p id="selected--joke"></p>
+      </div>
+      <div id="joke--change">
+        <h2>Select another joke!!!</h2>
+        <p id="jokeText"></p>
+        <button id="jokeButton" class="button--set">Random Joke</button>
+      </div>
+    </div>
+  </div>
+    <!-- Botones de navegación -->
+    <div class="carrousel-buttons">
+      <button class="carousel-prev">Anterior</button>
+      <button class="carousel-next">Siguiente</button>
+    </div>
+  <!-- Carrusel -->
+  <div class="carousel-slide">
+    <!-- Productos -->
+  </div>
 
-    <!-- <script type="module" src="script.js"></script> -->
-  </body>
+  <!-- <script type="module" src="script.js"></script> -->
 </body>
+
 
 </html>
